@@ -1,7 +1,7 @@
 require 'ostruct'
 
 # Describes the node structure
-class Node < OpenStruct
+class Node
   attr_reader :key, :value
 
   def initialize(key_value_pair)

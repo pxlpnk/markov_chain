@@ -3,24 +3,33 @@ require 'ostruct'
 class Graph
   attr_reader :nodes, :edges
 
-  def initialize(nodes = nil, edges = nil)
+  def initialize(nodes: nil, edges: nil)
     @nodes = nodes || {}
     @edges = edges || {}
   end
 
-  # XXX: doesn't make sense
-  def add_node(node)
-    @nodes[node.key] = node
+  def add_edge(edge)
+    if(edge1 = get_edge(edge.key))
+      edge1.increment
+      @edges[edge1.key] = edge1
+    else
+      @edges[edge.key] = edge
+    end
   end
 
-  def add_edge(predecessor, successor)
-    add_node(predecessor)
-    add_node(successor)
-    @edges[predecessor.key] = {}
-    @edges[predecessor.key][successor.key] = 1 + edge_weight(predecessor,successor)
+
+  def get_edge(key)
+    @edges.key?(key) ?  @edges[key] : nil
   end
 
-  def edge_weight(predecessor,successor)
-    @nodes[predecessor.key][successor.key]
+  def get_edge_weight(edge)
+    @edges[edge.predecessor].weight
+  end
+
+  def add_nodes_from_edge(edge)
+#    require 'pry'; binding.pry
+    edge.nodes.each do |node|
+      @nodes[node.key] = node
+    end
   end
 end
