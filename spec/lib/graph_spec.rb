@@ -13,15 +13,31 @@ describe Graph do
       expect(graph.nodes).to be_empty
     end
   end
-  describe 'adding nodes' do
+  describe 'adding elements' do
     let(:graph) { Graph.new }
     subject { graph }
+
     it 'lets you add a single node' do
       node = double('node', key: 'key')
       graph.add_node(node)
       expect(graph.nodes).to include(node.key)
     end
 
-    it 'influences the graph'
+    describe 'adding an edge' do
+      let(:graph) { Graph.new }
+      subject { graph }
+
+      let(:node1) { double('node1', key: 'key1') }
+      let(:node2) { double('node2', key: 'key2') }
+
+      it 'lets you add an edge(two nodes)' do
+        node1.should_receive(:[]).with('key2').and_return(0)
+        graph.add_edge(node1, node2)
+      end
+
+      it 'increments the weight by one'
+
+      it 'returns the edge_weight'
+    end
   end
 end
