@@ -67,6 +67,7 @@ describe Graph do
     subject { Graph.new(edges: edges) }
 
     it 'returns the weight of an existing edge' do
+      pending
       expect(subject.get_edge_weight(edge)).to eq 2
     end
   end

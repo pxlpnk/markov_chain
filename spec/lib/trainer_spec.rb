@@ -17,7 +17,7 @@ describe Trainer do
     it 'creates a node from a word' do
       word = 'foo'
       node = Node.new(foo: 'foo')
-      expect(subject.make_node(word)).to equal node
+      expect(subject.make_node(word)).to eq node
     end
   end
 

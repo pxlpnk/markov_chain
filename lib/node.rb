@@ -11,11 +11,7 @@ class Node
     @value = key_value_pair[@key]
   end
 
-  def ==(other)
-    if(@key == other.key && @value == other.value)
-      0
-    else
-      1
-    end
+  def <=>(other)
+    @key <=> other.key && value <=> other.value
   end
 end

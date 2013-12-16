@@ -11,7 +11,7 @@ describe Node do
     it 'with two key, values' do
       n1 = Node.new(key: 'value')
       n2 = Node.new(key: 'value')
-      expect(n1).to equal n2
+      expect(n1).to eq n2
     end
   end
 end
