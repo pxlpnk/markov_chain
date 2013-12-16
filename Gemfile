@@ -13,4 +13,5 @@ group :test do
   gem 'rspec'
   gem 'rubocop'
   gem 'reek'
+  gem 'simplecov'
 end

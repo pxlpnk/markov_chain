@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'node'
 describe Node do
   subject { Node.new(key: 'value') }

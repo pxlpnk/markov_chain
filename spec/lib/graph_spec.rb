@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'graph'
 require 'edge'
 
@@ -35,6 +36,15 @@ describe Graph do
       subject.add_edge(edge)
       expect(subject.get_edge(edge.key).weight).to eq 2
     end
+
+    it 'when not exsting, adds the edge with weight 1' do
+      subject.add_edge(edge)
+      expect(subject.get_edge(edge.key).weight).to eq 1
+    end
+
+    it 'returns the added edge' do
+      expect(subject.add_edge(edge)).to eql edge
+    end
   end
 
   describe '#add_nodes_from_edge' do
@@ -48,6 +58,32 @@ describe Graph do
       expect(subject.nodes).to_not be_empty
       expect(subject.nodes).to include :key1
       expect(subject.nodes).to include :key2
+    end
+  end
+
+  describe '#edge_weight' do
+    let(:edge) { double('edge', weight: 2, predecessor: double('node')) }
+    let(:edges) { double('edges', :[] => edge) }
+    subject { Graph.new(edges: edges) }
+
+    it 'returns the weight of an existing edge' do
+      expect(subject.get_edge_weight(edge)).to eq 2
+    end
+  end
+
+  describe '#get_edge' do
+    let(:edge) { double('edge', weight: 2, predecessor: double('node')) }
+    subject { Graph.new }
+    it 'returns nil if the edge is not found' do
+      expect(subject.get_edge(edge)).to be_nil
+    end
+
+    it 'returns the edge when found' do
+      edge =  double('edge', weight: 2, predecessor: double('node'))
+      edges = double('edges', key?: true, :[] => edge)
+      graph = Graph.new(edges: edges)
+
+      expect(graph.get_edge(edge)).to eq edge
     end
   end
 end

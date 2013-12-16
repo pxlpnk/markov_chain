@@ -9,14 +9,14 @@ class Graph
   end
 
   def add_edge(edge)
-    if(edge1 = get_edge(edge.key))
-      edge1.increment
-      @edges[edge1.key] = edge1
-    else
-      @edges[edge.key] = edge
+    key = edge.key
+    if @edges.key?(key)
+      edge = get_edge(key)
+      edge.increment
     end
-  end
 
+    @edges[key] = edge
+  end
 
   def get_edge(key)
     @edges.key?(key) ?  @edges[key] : nil
@@ -27,7 +27,6 @@ class Graph
   end
 
   def add_nodes_from_edge(edge)
-#    require 'pry'; binding.pry
     edge.nodes.each do |node|
       @nodes[node.key] = node
     end
