@@ -17,7 +17,7 @@ build:
           echo "from location $(which ruby)"
           echo -p "gem list: $(gem list)"
 
-    Add more steps here:
+    # Add more steps here:
     - script:
        name: ci task
        code: bundle exec rake ci
