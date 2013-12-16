@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+$LOAD_PATH << 'lib'
+
+require 'graph'
+require 'node'
+require 'edge'
+
+
+require 'pry'
+
+Pry::CLI.parse_options
