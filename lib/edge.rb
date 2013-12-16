@@ -24,4 +24,12 @@ class Edge
   def key
     predecessor.key
   end
+
+  def predecessor_key
+    predecessor.key
+  end
+
+  def successor_key
+    successor.key
+  end
 end

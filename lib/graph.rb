@@ -9,13 +9,15 @@ class Graph
   end
 
   def add_edge(edge)
-    key = edge.key
-    if @edges.key?(key)
-      edge = get_edge(key)
+    @edges[edge.predecessor_key] = {} if @edges[edge.predecessor_key].nil?
+    increment_edge_weight(edge)
+    @edges[edge.predecessor_key][edge.successor_key] = edge
+  end
+
+  def increment_edge_weight(edge)
+    if @edges.key?(edge.predecessor_key)
       edge.increment
     end
-
-    @edges[key] = edge
   end
 
   def get_edge(key)
@@ -23,7 +25,7 @@ class Graph
   end
 
   def get_edge_weight(edge)
-    @edges[edge.predecessor].weight
+    @edges[edge.predecessor_key][edge.successor_key].weight
   end
 
   def add_nodes_from_edge(edge)

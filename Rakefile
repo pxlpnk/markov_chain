@@ -14,3 +14,4 @@ Rubocop::RakeTask.new
 
 desc 'Run all tests and checkers'
 task ci:  %w[spec reek rubocop]
+task clean_code: %w[ reek rubocop]

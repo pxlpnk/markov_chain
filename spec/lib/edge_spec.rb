@@ -16,6 +16,9 @@ describe Edge do
   its(:key) { should == :key1 }
   its(:nodes) { should == [predecessor, successor] }
 
+  its(:predecessor_key) { should == :key1 }
+  its(:successor_key) { should == :key2 }
+
   it 'increments the weight by one' do
     expect(edge.increment).to eq 2
     expect(edge.weight).to eq 2
