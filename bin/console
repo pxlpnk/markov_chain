@@ -4,6 +4,7 @@ $LOAD_PATH << 'lib'
 require 'graph'
 require 'node'
 require 'edge'
+require 'trainer'
 
 require 'pry'
 
