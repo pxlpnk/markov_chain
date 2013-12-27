@@ -8,7 +8,7 @@ describe Trainer do
       sentences = ['Are we allowed to run over people?',
                    'Private Wiley inquires, and then mashes the horn button before Bobby Shaftoe can answer.',
                    'A Sikh policeman hurdles a night soil cart.']
-      subject.train(graph, sentences)
+      subject.train(sentences)
     end
 
   end
@@ -21,11 +21,11 @@ describe Trainer do
     end
   end
 
-  describe '#words' do
+  describe '#sentence_to_words' do
     it 'splits a sentence into words' do
       sentence = 'Are we allowed to run over people?'
       words = %w(Are we allowed to run over people?)
-      expect(subject.words(sentence)).to eql words
+      expect(subject.sentence_to_words(sentence)).to eql words
     end
   end
 

@@ -1,8 +1,11 @@
+require 'graph'
+require 'node'
+require 'edge'
 class Trainer
   attr_reader :graph
 
 
-  def initialize(graph)
+  def initialize(graph = nil)
     @graph = graph || Graph.new
   end
 
