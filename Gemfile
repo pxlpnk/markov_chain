@@ -11,6 +11,7 @@ end
 
 group :test do
   gem 'rspec'
+  gem 'rspec-its'
   gem 'rubocop'
   gem 'reek'
   gem 'simplecov'

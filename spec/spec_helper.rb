@@ -5,6 +5,8 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require 'rspec/its'
+
 if ENV['simplecov']
   puts 'Running with simplecov'
   require 'simplecov'
