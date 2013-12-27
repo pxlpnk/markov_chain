@@ -15,9 +15,7 @@ class Graph
   end
 
   def increment_edge_weight(edge)
-    if @edges.key?(edge.predecessor_key)
-      edge.increment
-    end
+    edge.increment if @edges.key?(edge.predecessor_key)
   end
 
   def get_edge(key)

@@ -4,9 +4,7 @@ require 'trainer'
 describe Trainer do
   describe '#train' do
     it 'takes a graph and a list of sentences' do
-      graph = Graph.new
       sentences = ['Are we allowed to run over people?',
-                   'Private Wiley inquires, and then mashes the horn button before Bobby Shaftoe can answer.',
                    'A Sikh policeman hurdles a night soil cart.']
       subject.train(sentences)
     end

@@ -23,7 +23,13 @@ describe Graph do
   describe '#add_edge' do
     before { pending }
 
-    let(:edge) { double('Edge', predecessor_key: :key1, successor_key: :key2, key: :key1, weight: 1) }
+    let(:edge) do
+      double('Edge',
+             predecessor_key: :key1,
+             successor_key: :key2,
+             key: :key1,
+             weight: 1)
+    end
     subject { Graph.new }
 
     it 'to the edges-list' do

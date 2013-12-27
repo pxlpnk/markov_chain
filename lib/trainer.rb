@@ -1,9 +1,9 @@
 require 'graph'
 require 'node'
 require 'edge'
+# Training the Markov Chain
 class Trainer
   attr_reader :graph
-
 
   def initialize(graph = nil)
     @graph = graph || Graph.new
@@ -13,17 +13,17 @@ class Trainer
     sentences.each do |sentence|
       words = sentence_to_words(sentence)
       words.each_with_index do |word, index|
-        next_word = words[index+1]
+        next_word = words[index + 1]
         add_word_to_graph(word, next_word)
       end
     end
   end
 
-  def add_word_to_graph(word,next_word)
+  def add_word_to_graph(word, next_word)
     if next_word
       n1 = make_node(word)
       n2 = make_node(next_word)
-      edge = Edge.new(n1,n2)
+      edge = Edge.new(n1, n2)
       @graph.add_edge(edge)
     end
   end
