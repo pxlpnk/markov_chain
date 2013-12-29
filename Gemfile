@@ -15,4 +15,6 @@ group :test do
   gem 'rubocop'
   gem 'reek'
   gem 'simplecov'
+  gem 'flog'
+  gem 'flay'
 end

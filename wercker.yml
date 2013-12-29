@@ -20,4 +20,4 @@ build:
     # Add more steps here:
     - script:
        name: ci task
-       code: bundle exec rake ci
+       code: bundle exec rake ci -t
