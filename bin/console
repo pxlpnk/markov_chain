@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+$LOAD_PATH << 'lib'
+
+require 'markov_chain/node'
+require 'markov_chain/edge'
+require 'markov_chain/graph'
+
+@n1 = MarkovChain::Node.new(:key1, 'value1')
+@n2 = MarkovChain::Node.new(:key2, 'value2')
+@n3 = MarkovChain::Node.new(:key3, 'value3')
+
+@e1 = MarkovChain::Edge.new(@n1, @n2)
+@e2 = MarkovChain::Edge.new(@n1, @n3)
+
+@g = MarkovChain::Graph.new
+
+require 'pry'
+
+Pry::CLI.parse_options
