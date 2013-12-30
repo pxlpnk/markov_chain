@@ -4,6 +4,7 @@ $LOAD_PATH << 'lib'
 require 'markov_chain/node'
 require 'markov_chain/edge'
 require 'markov_chain/graph'
+require 'markov_chain/trainer'
 
 @n1 = MarkovChain::Node.new(:key1, 'value1')
 @n2 = MarkovChain::Node.new(:key2, 'value2')
@@ -13,6 +14,15 @@ require 'markov_chain/graph'
 @e2 = MarkovChain::Edge.new(@n1, @n3)
 
 @g = MarkovChain::Graph.new
+
+@t = MarkovChain::Trainer.new
+
+@sentences = ['Are we allowed to run over people?',
+              'A Sikh policeman hurdles a night soil cart.']
+
+@s = ['A B C D',
+      'A B D',
+      'C D']
 
 require 'pry'
 
