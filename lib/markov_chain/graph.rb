@@ -27,15 +27,22 @@ module MarkovChain
 
     def add_to_edges(edge)
       if has_edge?(edge)
-        edge = get_edge(edge)
-        edge.increment_weight
-      elsif !has_predecessor?(edge)
+        edge = increment_edge(edge)
+      elsif has_predecessor?(edge)
+        # intetionally left blank
+      else
         @edges[edge.predecessor_key] = {}
       end
 
       @edges[edge.predecessor_key][edge.successor_key] = edge
 
       @edges
+    end
+
+    def increment_edge(edge)
+      edge = get_edge(edge)
+      edge.increment_weight
+      edge
     end
 
     def successor?(edge)
@@ -56,6 +63,30 @@ module MarkovChain
 
     def get_edge(edge)
       has_edge?(edge) ? @edges[edge.predecessor_key][edge.successor_key] : nil
+    end
+
+    def successor_with(predecessor, selector = lambda{ |x| x > 0})
+      edges = @edges[predecessor] || []
+      sorted = edges.sort_by { |k,v| v.weight }.reverse!
+      sorted.select{ |edge| selector.call(edge.last.weight) }
+    end
+
+    def biggest_successor(predecessor)
+      edges = successor_with(predecessor)
+      edges.first
+    end
+
+    def smallest_sucessor(predecessor)
+      edges = successor_with(predecessor)
+      edges.last
+    end
+
+    def weights(node)
+      weights = {}
+      @edges[node.key].each do |key, edge|
+        weights.merge!(key => edge.weight)
+      end
+      weights.sort_by { |_k, weight| weight }
     end
   end
 end

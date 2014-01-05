@@ -1,7 +1,7 @@
-# To train the markov chain data graph
+# TO: refactor, and test
 module MarkovChain
+  # To train the markov chain data graph
   class Trainer
-
     attr_reader :graph
 
     def initialize(graph = nil)
@@ -12,10 +12,11 @@ module MarkovChain
       sentences.each do |sentence|
         words = words_from_sentence sentence
         words.each_cons(2) do |predecessor, successor|
-          add_edge_to_graph(predecessor,successor)
+          add_edge_to_graph(predecessor, successor)
         end
       end
-      @graph
+      #      @graph
+      nil
     end
 
     def add_edge_to_graph(predecessor_word, successor_word)
@@ -27,6 +28,12 @@ module MarkovChain
 
     def words_from_sentence(sentence)
       sentence.split(' ')
+    end
+  end
+
+  class << self
+    def parse_text_to_sentences(text)
+      text.split('.')
     end
   end
 end

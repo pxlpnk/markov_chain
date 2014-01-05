@@ -1,10 +1,12 @@
 #!/usr/bin/env ruby
 $LOAD_PATH << 'lib'
 
+# FIXME: asdasd
 require 'markov_chain/node'
 require 'markov_chain/edge'
 require 'markov_chain/graph'
 require 'markov_chain/trainer'
+require 'markov_chain/creator'
 
 @n1 = MarkovChain::Node.new(:key1, 'value1')
 @n2 = MarkovChain::Node.new(:key2, 'value2')
@@ -23,6 +25,22 @@ require 'markov_chain/trainer'
 @s = ['A B C D',
       'A B D',
       'C D']
+
+
+regex = /[\s+]?[\W+]/
+cryp = File.read('/Users/at/Dropbox/Books/command.txt')
+@se = cryp.strip.gsub(regex, " ").split('.').map(&:strip)
+
+schiller = File.read('tmp/schiller_glocke.txt')
+@sch = schiller.strip.gsub(regex, " ").split('.').map(&:strip)
+
+wu = File.read('tmp/wutang.txt')
+@wu = wu.strip.gsub(regex, " ").split('.').map(&:strip)
+
+@t.train @se
+@t.train @wu
+
+@cr = MarkovChain::Creator.new(@t.graph)
 
 require 'pry'
 
