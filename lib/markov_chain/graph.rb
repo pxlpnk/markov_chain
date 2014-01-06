@@ -65,10 +65,10 @@ module MarkovChain
       has_edge?(edge) ? @edges[edge.predecessor_key][edge.successor_key] : nil
     end
 
-    def successor_with(predecessor, selector = lambda{ |x| x > 0})
+    def successor_with(predecessor, selector = -> (x) { x > 0 })
       edges = @edges[predecessor] || []
-      sorted = edges.sort_by { |k,v| v.weight }.reverse!
-      sorted.select{ |edge| selector.call(edge.last.weight) }
+      sorted = edges.sort_by { |k, v| v.weight }.reverse!
+      sorted.select { |edge| selector.call(edge.last.weight) }
     end
 
     def biggest_successor(predecessor)

@@ -1,8 +1,8 @@
 module MarkovChain
   # MarkovChain::Graph data structure
   class Creator
-
     attr_reader :graph
+
     def initialize(graph)
       @graph = graph
     end

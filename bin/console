@@ -26,16 +26,15 @@ require 'markov_chain/creator'
       'A B D',
       'C D']
 
-
 regex = /[\s+]?[\W+]/
 cryp = File.read('/Users/at/Dropbox/Books/command.txt')
-@se = cryp.strip.gsub(regex, " ").split('.').map(&:strip)
+@se = cryp.strip.gsub(regex, ' ').split('.').map(&:strip)
 
 schiller = File.read('tmp/schiller_glocke.txt')
-@sch = schiller.strip.gsub(regex, " ").split('.').map(&:strip)
+@sch = schiller.strip.gsub(regex, ' ').split('.').map(&:strip)
 
 wu = File.read('tmp/wutang.txt')
-@wu = wu.strip.gsub(regex, " ").split('.').map(&:strip)
+@wu = wu.strip.gsub(regex, ' ').split('.').map(&:strip)
 
 @t.train @se
 @t.train @wu
